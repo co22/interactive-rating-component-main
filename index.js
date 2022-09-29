@@ -8,7 +8,7 @@ window.onload = () => {
  * @return: NA
  */
 function setEventListeners() {
-    const submitButton = document.getElementById("submit-button");
+    const submitButton = document.querySelector(".submit-button");
     submitButton.addEventListener("click", hideRatingState);
     submitButton.addEventListener("click", displayThankYouState);
 }
@@ -19,7 +19,7 @@ function setEventListeners() {
  * @return: NA
  */
 function hideRatingState() {
-    const ratingStateContainer = document.getElementById("rating-state-container");
+    const ratingStateContainer = document.querySelector(".rating-state-container");
     ratingStateContainer.style.display = "none";
     ratingStateContainer.style.visibility = "hidden";
     return false;
@@ -31,7 +31,7 @@ function hideRatingState() {
  * @return: NA
  */
 function displayThankYouState() {
-    const thankYouStateContainer = document.getElementById("thank-you-state-container");
+    const thankYouStateContainer = document.querySelector(".thank-you-state-container");
     thankYouStateContainer.style.display = "block";
     thankYouStateContainer.style.visibility = "visible";
     return false;
