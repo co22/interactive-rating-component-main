@@ -15,11 +15,20 @@
     --dark-blue: hsl(213, 19%, 18%);
     --very-dark-blue: hsl(216, 12%, 8%);
 
+    --modified-dark-blue: hsl(213, 19%, 20%);
+
     /* Font variables */
     --overpass-font: 'Overpass', sans-serif;
 }
+h1 {
+    font-size: 1.625rem; /* 26px */
+    font-weight: 400;
+}
 p {
-    font-size: 15px;
+    font-size: 0.9375rem; /* 15px */
+}
+h1, p, label, button {
+    font-family: var(--overpass-font);
 }
 
 /* Background styling */
@@ -30,27 +39,43 @@ html, body {
 }
 
 /* Entire form styling */
-body {
+body, main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    min-height: 100vh;
 }
-.container {
+.container, .rating-state-container, .thank-you-state-container {
     margin: 1.5rem;
     height: fit-content;
-    border-radius: 0.5rem;
+    border-radius: 1.8rem;
     overflow: hidden;
     background-color: var(--dark-blue);
+    padding: 2rem;
+    padding-bottom: 1.75rem;
+    max-width: 25.625rem; /* 410px */
 }
-
+.rating-feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+.rating-feedback-form p, .feedback-button-container, .submit-button {
+    align-self: center;
+}
 .container .icon, input {
-    background-color: var(--medium-grey);
+    background-color: var(--modified-dark-blue);
     border-radius: 50%;
-
 }
 
 /* Star icon styling */
+.container .icon {
+    border: 1px solid transparent;
+    border-width: 0.9rem;
+    margin-bottom: 1.75rem;
+}
 
 /* Text styling */
 .container h1, p {
@@ -59,32 +84,70 @@ body {
 /* Header styling */
 .container h1 {
     color: var(--white);
+    margin-bottom: 0.2rem;
 }
 /* Paragraph styling*/
 .container p {
     color: var(--medium-grey);
+    line-height: 1.5;
 }
 
 /* Feedback button styling */
 .feedback-button-container {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    gap: 1.25rem;
     z-index: 10;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
 }
 .container label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: var(--light-grey);
+    background-color: var(--modified-dark-blue);
+    border: 1px solid transparent;
+    border-width: 1.6rem;
+    border-radius: 50%;
+    text-align: center;
+    max-width: 1.5rem;
+    max-height: 1.5rem;
+}
+.container input {
+    display: none;
+}
+.container label:hover {
+    color: var(--white);
+    background-color: var(--light-grey);
+    cursor: pointer;
+}
+.container label:active {
+    color: var(--white);
+    background-color: var(--orange);
+
 }
 
 /* Submit button styling */
 .container button {
     background-color: var(--orange);
     color: var(--white);
+    font-size: 0.9375rem; /* 15px */
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.125rem;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 5rem;
+    padding: 0.7rem;
+    margin: 0.3rem 0.3rem 0.3rem 0;
 }
-
-
 
 /* Footer styling */
 footer {
+    display: none;
     width: 100%;
     margin-top: 0;
 }
@@ -95,9 +158,58 @@ footer {
     color: hsl(228, 45%, 44%);
 }
 
-/* TODO: UNHIDE THANK YOU STATE WHEN READY */
+/* Thank You State styling */
+.thank-you-state-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.thank-you-state-container img {
+    max-width: 100%;
+    margin: 1rem;
+}
+.thank-you-state-container .rating-result {
+    color: var(--orange);
+    background-color: var(--modified-dark-blue);
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    margin: 0.5rem 3.5rem 1.5rem 3.5rem;
+    padding: 0.3rem;
+}
+.thank-you-state-container .header {
+    margin: 0.5rem 0 0.5rem 0;
+}
+.thank-you-state-container .thank-you-text {
+    margin-bottom: 1.2rem;
+}
+
+/* Hide Thank You State */
 .thank-you-state-container {
     display: none;
     visibility: hidden;
     z-index: 11;
+}
+
+/* Mobile styling */
+@media only screen and (max-width: 768px) {
+    .container, .rating-state-container, .thank-you-state-container {
+        max-width: 400px;
+        padding: 1rem;
+    }
+    .feedback-button-container {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        max-width: 100%;
+    }
+    .container .icon {
+        margin-bottom: 0.8rem;
+    }
+    .container label {
+        border-width: 1.3rem;
+    }
+    .container button {
+        margin-bottom: 1rem;
+    }
 }
